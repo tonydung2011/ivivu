@@ -12,7 +12,6 @@ namespace ivivu.Models
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
 		public DateTime ngayThanhToan { get; set; }
 
-        [DataType(DataType.Currency)]
 		public int tongTien { get; set; }
 
 		public string maDP { get; set; }

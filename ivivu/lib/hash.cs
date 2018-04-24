@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Security.Cryptography;
 using System.Text;
+using System.Web;
 
 namespace ivivu.lib
 {
@@ -10,16 +11,17 @@ namespace ivivu.lib
         {
         }
 
-        public string hashMD5(string source, string key)
+        public string hashSourceKey(string source, string key, string provider)
         {
-            HashAlgorithm md5hash = MD5.Create(key);
-            byte[] hashResult = md5hash.ComputeHash(Encoding.UTF8.GetBytes(source));
-            StringBuilder sBuilder = new StringBuilder();
-            for (int i = 0; i < hashResult.Length; i++)
-            {
-                sBuilder.Append(hashResult[i].ToString("x2"));
-            }
-            return sBuilder.ToString();  
+            HashAlgorithm sha = new SHA1CryptoServiceProvider();
+            byte[] s = sha.ComputeHash(Encoding.UTF8.GetBytes(source));
+            byte[] k = sha.ComputeHash(Encoding.UTF8.GetBytes(key));
+            byte[] p = sha.ComputeHash(Encoding.UTF8.GetBytes(provider));
+            byte[] r = new byte[60];
+            p.CopyTo(r, 0);
+            s.CopyTo(r, 0); 
+            k.CopyTo(r, 0);
+            return HttpServerUtility.UrlTokenEncode(r);
         }
     }
 }

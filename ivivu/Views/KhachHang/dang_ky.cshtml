@@ -1,41 +1,39 @@
-﻿@model ivivu.Models.KhachHang
+﻿@model ivivu.Models.KhachHang 
 
-@{
-    ViewBag.Title = "DangKy";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+<h2>Dang Ky Thong Tin</h2>
+
+@using (Html.BeginForm("post_dang_ky", "KhachHang", FormMethod.Post)){
+    <div>
+        @Html.LabelFor(model => model.hoTen, "Ho va Ten: ")
+        @Html.TextBoxFor(model => model.hoTen)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.tenDangNhap, "Ten dang nhap: ")
+        @Html.TextBoxFor(model => model.tenDangNhap)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.matKhau, "Mat Khau: ")
+        @Html.PasswordFor(model => model.matKhau)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.soCMND, "So Chung Minh Nhan Dan: ")
+        @Html.TextBoxFor(model => model.soCMND)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.soDienThoai, "So Dien Thoai: ")
+        @Html.TextBoxFor(model => model.soDienThoai)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.diaChi, "Dia Chi: ")
+        @Html.TextBoxFor(model => model.diaChi)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.email, "Email: ")
+        @Html.TextBoxFor(model => model.email)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.moTa, "Mo ta: ")
+        @Html.TextAreaFor(model => model.moTa)
+    </div>
+    <input type="submit" value="Dang Ky"/>   
 }
-
-<h2>DangKy</h2>
-<div>
-    <form id="form-dang-nhap" action="/KhachHang/post_dang_ky" method="post">
-        <div>
-            <label>Ho va Ten: </label>
-            <input type="text" name="Model.hoTen" id="hoTen"/>        
-        </div>
-        <div>
-            <label>Ten dang nhap: </label>
-            <input type="text" name="Model.tenDangNhap" id="tenDangNhap"/>        
-        </div>
-        <div>
-            <label>Mat Khau: </label>
-            <input type="password" name="Model.matKhau" id="matKhau"/>        
-        </div>
-        <div>
-            <label>So CMND: </label>
-            <input type="text" name="Model.soCMND" id="soCMND"/>        
-        </div>
-        <div>
-            <label>So Dien Thoai: </label>
-            <input type="text" name="Model.soDienThoai" id="soDienThoai"/>        
-        </div>
-        <div>
-            <label>Email: </label>
-            <input type="text" name="Model.email" id="email"/>        
-        </div>
-        <div>
-            <label>Mo ta: </label>
-            <textarea name="Model.moTa" form="form-dang-nhap" maxlength=300></textarea>
-        </div>
-        <input type="submit"/>
-    </form>
-</div>

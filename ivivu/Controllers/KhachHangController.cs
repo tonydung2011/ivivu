@@ -26,7 +26,7 @@ namespace ivivu.Controllers
         {
             IvivuContext db = new IvivuContext();
             hash h = new hash();
-            string hashResult = h.hashMD5(KhachHangData.matKhau.ToString(), KhachHangData.tenDangNhap);
+            string hashResult = h.hashSourceKey(KhachHangData.matKhau, KhachHangData.tenDangNhap, "KhachHang");
             db.KhachHangs.Add(new KhachHang()
             {
                 maKh = hashResult,

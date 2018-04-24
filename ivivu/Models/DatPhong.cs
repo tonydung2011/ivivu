@@ -23,8 +23,7 @@ namespace ivivu.Models
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime ngayDat { get; set; }
 
-        [DataType(DataType.Currency)]
-        public object donGia { get; set; }
+        public int donGia { get; set; }
 
         public string moTa  { get; set; }
         public string tinhTrang  { get; set; }
