@@ -19,9 +19,11 @@ Tài Liệu đã tham khảo và sử dụng:
 
 Kết nối với Database:
  - chú ý tại file ivivu/Web.config: 
-        <connectionStrings> 
-            <add name="QLKS" providerName="System.Data.SqlClient" connectionString="Server=127.0.0.1; Database=QLKS; User   Id=SA;Password=p@55w0rd_mssqlserver"/> 
-        </connectionStrings> 
+
+    <connectionStrings> 
+        <add name="QLKS" providerName="System.Data.SqlClient" connectionString="Server=127.0.0.1; Database=QLKS; User Id=SA;Password=p@55w0rd_mssqlserver"/> 
+    </connectionStrings> 
+    
  chỉnh sủa connectionString thành:
   + Id=<ten dang nhap database cua ban>
   + Password=<password dang nhap database cua ban>
