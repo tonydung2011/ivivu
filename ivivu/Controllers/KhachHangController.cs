@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ivivu.DAL;
+using ivivu.lib;
+using ivivu.Models;
 
 namespace ivivu.Controllers
 {
@@ -18,9 +21,24 @@ namespace ivivu.Controllers
             return View();
         }
 
-        public ActionResult post_dang_ky(string hoTen, string tenDangNhap, string matKhau, string soCMND, string soDienThoai, string email, string moTa)
+        [HttpPost]
+        public ActionResult post_dang_ky(Models.KhachHang KhachHangData)
         {
-            
+            IvivuContext db = new IvivuContext();
+            hash h = new hash();
+            string hashResult = h.hashMD5(KhachHangData.matKhau.ToString(), KhachHangData.tenDangNhap);
+            db.KhachHangs.Add(new KhachHang()
+            {
+                maKh = hashResult,
+                hoTen = KhachHangData.hoTen,
+                tenDangNhap = KhachHangData.tenDangNhap,
+                matKhau = KhachHangData.matKhau,
+                soCMND = KhachHangData.soCMND,
+                diaChi = KhachHangData.diaChi,
+                soDienThoai = KhachHangData.soDienThoai,
+                email = KhachHangData.email
+            });
+            db.SaveChanges();
             return View();
         }
     }
