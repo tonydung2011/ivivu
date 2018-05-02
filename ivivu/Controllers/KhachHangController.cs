@@ -16,7 +16,9 @@ namespace ivivu.Controllers
         [UserAuthenticationFilter]
         public ActionResult index()
         {
-            return View();
+            IvivuContext db = new IvivuContext();
+            KhachHang kh = db.KhachHangs.where(kh => kh.tenDangNhap = HttpContext.User.Identity.Name).FirstOrDefault();
+            return View(kh);
         }
 
         public ActionResult dang_ky()

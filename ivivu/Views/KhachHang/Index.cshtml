@@ -1,5 +1,6 @@
-﻿@{
-    ViewBag.Title = "I";
+﻿@model ivivu.Models.KhachHang
+@{
+    ViewBag.Title = "Thong tin Co Ban";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -7,3 +8,6 @@
 <form action="/KhachHang/dang_xuat" method="POST" id="dang-xuat">
     <input type="submit" name="Dang Xuat"/>
 </form>
+
+<!-- them phan thong tin co ban khach hang tai day -->
+<!-- @Model.tenDangNhap, @Model.diaChi, ... -->
