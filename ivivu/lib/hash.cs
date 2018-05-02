@@ -11,7 +11,7 @@ namespace ivivu.lib
         {
         }
 
-        public string hashSourceKey(string source, string key, string provider)
+        public string hashSourceKeyP(string source, string key, string provider)
         {
             HashAlgorithm sha = new SHA1CryptoServiceProvider();
             byte[] s = sha.ComputeHash(Encoding.UTF8.GetBytes(source));
@@ -22,6 +22,20 @@ namespace ivivu.lib
             s.CopyTo(r, 0); 
             k.CopyTo(r, 0);
             return HttpServerUtility.UrlTokenEncode(r);
+        }
+
+        public string hashKeyToken(string key, string token)
+        {
+            var keyByte = Encoding.UTF8.GetBytes(key.ToUpper());
+            string tokenHashString;
+
+            using (var hmac = new HMACSHA256(keyByte))
+            {
+                var hash = hmac.ComputeHash(Encoding.UTF8.GetBytes(token));
+                tokenHashString = Convert.ToBase64String(hash);
+            }
+
+            return tokenHashString;
         }
     }
 }

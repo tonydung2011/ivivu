@@ -17,6 +17,7 @@ namespace ivivu.DAL
         public DbSet<KhachHang> KhachHangs { get; set;}
         public DbSet<HoaDon> HoaDons { get; set;}
         public DbSet<KhachSan> KhachSans  { get; set;}
+        public DbSet<Admin> Admins { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

@@ -2,7 +2,7 @@
 
 <h2>Dang Ky Thong Tin</h2>
 
-@using (Html.BeginForm("post_dang_ky", "KhachHang", FormMethod.Post)){
+@using (Html.BeginForm("dang_ky", "KhachHang", FormMethod.Post)){
     <div>
         @Html.LabelFor(model => model.hoTen, "Ho va Ten: ")
         @Html.TextBoxFor(model => model.hoTen)

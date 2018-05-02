@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "dang_nhap";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>dang_nhap</h2>
+<form action="/Admin/dang_nhap" method="POST">
+    <div>
+        <label>Ten Dang Nhap:</label>
+        <input type="text" id="ten-dang-nhap" name="tenDangNhap"/>
+    </div>
+    <div>
+        <label>Mat Khau:</label>
+        <input type="password" id="mat-khau" name="matKhau"/>
+    </div>
+    <input type="submit" name="Dang Nhap"/>
+</form>
