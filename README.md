@@ -66,24 +66,35 @@ Cách đặt tên biến:
  - biến, function bình thường: viết kiểu camel case. ví dụ: testDatabase, addUser
 
 Làm sao để phối hợp source code:
- B1: bấm vào nút fork repo để copy về repo rieng6 của mình
+ B1: bấm vào nút fork repo để copy về repo riêng của mình
  B2: tại gitBash trên máy tính: clone về máy
   vd:
+
 	git clone git@github.com:HoangNgocDuc/ivivu.git
+
   or:
+
 	git clone https://github.com/HoangNgocDuc/ivivu.git
 
  B3: thêm một remote tên là upstream với địa chỉ gốc là repo này:
+
 	git remote add upstream https://github.com/tonydung2011/ivivu.git
+
 hoặc:
+
 	git remote add upstream git@github.com:tonydung2011/ivivu.git
 
  B4: checkout một branch riêng để làm việc trên đó:
+
 	git checkout -b F22
 	git pull upstream master
+
  => làm task có số tt 22
+
 	git add <>
 	git commit -m "nội dung thông báo cho commit này"
 	git push
+
 tại bước này nếu đây là lần push đầu tiên cho branch này. git sẽ thông báo lỗi. Dùng lệnh theo gợi ý của git
+
 	git push --set-upstream upstream F22
