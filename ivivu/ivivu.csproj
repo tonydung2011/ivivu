@@ -91,7 +91,6 @@
     <Folder Include="DAL\" />
     <Folder Include="filter\" />
     <Folder Include="role\" />
-    <Folder Include="Views\Admin\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
@@ -114,9 +113,10 @@
     <Compile Include="role\VoDanh.cs" />
     <Compile Include="role\KhachDatPhong.cs" />
     <Compile Include="role\QuanTriVien.cs" />
-    <Compile Include="filter\AdminAuthenticationFilter.cs" />
-    <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Models\Admin.cs" />
+    <Compile Include="lib\database.cs" />
+    <Compile Include="Controllers\QuanTriController.cs" />
+    <Compile Include="filter\QuanTriAuthenticationFilter.cs" />
+    <Compile Include="Models\QuanTri.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />
@@ -160,8 +160,16 @@
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Views\KhachHang\dang_nhap.cshtml" />
-    <Content Include="Views\Admin\dang_nhap.cshtml" />
-    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\QuanTri\Index.cshtml" />
+    <Content Include="Views\QuanTri\chinh_sua_khach_san.cshtml" />
+    <Content Include="Views\QuanTri\chinh_sua_loai_phong.cshtml" />
+    <Content Include="Views\QuanTri\dang_nhap.cshtml" />
+    <Content Include="Views\QuanTri\danh_sach_khach_san.cshtml" />
+    <Content Include="Views\QuanTri\danh_sach_loai_phong.cshtml" />
+    <Content Include="Views\QuanTri\them_khach_san.cshtml" />
+    <Content Include="Views\QuanTri\them_loai_phong.cshtml" />
+    <Content Include="Views\QuanTri\thong_tin_khach_san.cshtml" />
+    <Content Include="Views\QuanTri\thong_tin_loai_phong.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\jquery-3.0.0.slim.min.map" />

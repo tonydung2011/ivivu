@@ -7,11 +7,11 @@ using ivivu.role;
 
 namespace ivivu.filters
 {
-    public class AdminAuthenticationFilter : ActionFilterAttribute, IAuthenticationFilter
+    public class QuanTriAuthenticationFilter : ActionFilterAttribute, IAuthenticationFilter
     {
         public void OnAuthentication(AuthenticationContext filterContext)
         {
-            if (string.IsNullOrEmpty(Convert.ToString(filterContext.HttpContext.Session["AdminID"])))
+            if (string.IsNullOrEmpty(Convert.ToString(filterContext.HttpContext.Session["QuanTriID"])))
             {
                 filterContext.Result = new HttpUnauthorizedResult();
             } else 

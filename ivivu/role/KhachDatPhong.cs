@@ -34,7 +34,7 @@ namespace ivivu.role
         {
             switch (role)
             {
-                case "admin":
+                case "QuanTri":
                     {
                         return false;
                     }

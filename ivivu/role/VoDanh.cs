@@ -26,7 +26,7 @@ namespace ivivu.role
         public bool IsInRole(string role)
         {
             switch (role) {
-                case "admin":
+                case "QuanTri":
                     {
                         return false;
                     }

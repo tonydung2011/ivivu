@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ivivu.Models
 {
-    public class Admin
+    public class QuanTri
     {   
         [Key]
         public string tenDangNhap { get; set; }

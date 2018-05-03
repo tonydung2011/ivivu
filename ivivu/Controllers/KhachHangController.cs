@@ -13,11 +13,16 @@ namespace ivivu.Controllers
 {
     public class KhachHangController : Controller
     {
+        private database ivivuDB;
+        public KhachHangController()
+        {
+            ivivuDB = new database();
+        }
+
         [UserAuthenticationFilter]
         public ActionResult index()
         {
-            IvivuContext db = new IvivuContext();
-            KhachHang kh = db.KhachHangs.where(kh => kh.tenDangNhap = HttpContext.User.Identity.Name).FirstOrDefault();
+            KhachHang kh = ivivuDB.timKhachHangTheoTenDangNhap(HttpContext.User.Identity.Name);
             return View(kh);
         }
 
@@ -29,29 +34,9 @@ namespace ivivu.Controllers
         [HttpPost]
         public ActionResult dang_ky(Models.KhachHang KhachHangData)
         {
-            IvivuContext db = new IvivuContext();
-            hash h = new hash();
-            DateTime now = DateTime.Now;
-            try
-            {
-                db.KhachHangs.Add(new KhachHang()
-                {
-                    maKh = "KH" + now.ToString(),
-                    hoTen = KhachHangData.hoTen,
-                    tenDangNhap = KhachHangData.tenDangNhap,
-                    matKhau = KhachHangData.matKhau,
-                    soCMND = KhachHangData.soCMND,
-                    diaChi = KhachHangData.diaChi,
-                    soDienThoai = KhachHangData.soDienThoai,
-                    email = KhachHangData.email
-                });
-                db.SaveChanges();
-                return RedirectToAction("dang_nhap", "KhachHang");
-            } catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-                return RedirectToAction("dang_ky", "KhachHang");
-            }
+           bool temp = ivivuDB.themKhachHang(KhachHangData);
+           if (temp) return RedirectToAction("dang_nhap", "KhachHang");
+           return RedirectToAction("dang_ky", "KhachHang");
         }
 
         public ActionResult dang_nhap()
@@ -62,9 +47,7 @@ namespace ivivu.Controllers
         [HttpPost]
         public ActionResult dang_nhap(string tenDangNhap, string matKhau)
         {
-            IvivuContext db = new IvivuContext();
-            hash hash = new hash();
-            KhachHang ketquaKH = db.KhachHangs.Where(kh => (kh.tenDangNhap == tenDangNhap && kh.matKhau == matKhau)).FirstOrDefault();
+            KhachHang ketquaKH = ivivuDB.timKhachHang(tenDangNhap, matKhau);
             if (ketquaKH != null) {
                 Session["UserID"] = Guid.NewGuid();
                 Session["User"] = tenDangNhap;
