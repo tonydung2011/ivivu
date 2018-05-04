@@ -1,1 +1,105 @@
-﻿<h2>Welcome to ASP.NET MVC @ViewData["Version"] on @ViewData["Runtime"]!</h2>
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="../../Scripts/jquery-3.0.0.min.js"></script>
+    <link rel="stylesheet" href="../../Content/home_index.css">
+    <title>Landing Page</title>
+</head>
+<body>
+    <div class="container-fluid px-0">
+        <div class="overflow-x background-container">
+            <img id="background-image" class="px-0" src= "http://www.the-blockchain.com/wp-content/uploads/2018/02/Vitale-Guestroom-King-03-PD0912-CRPD1600x760.jpg" alt="background-image">
+            <div class="hover-on-background d-flex position-absolute flex-column-reverse">
+                <div class="background-caption h-25">
+                    <p>ACHIVE BETTER</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid customer-comment overflow-x mt-5">
+            <ul id="comment-list" class="row">
+                <li class="comment col col-12 col-md-4">
+                    <div>
+                        <img class="avatar" src="https://upload.wikimedia.org/wikipedia/vi/thumb/2/29/Pascal-old_cropped.png/220px-Pascal-old_cropped.png" alt="Pascal">
+                        <h4>Pascal</h4>
+                        <p>The writing style is similar to today’s Celtic style writing seen in Celtic fonts, and then the style was brought to the continental Europe by Irish missioners.</p>
+                    </div>
+                </li>
+                <li class="comment col col-12 col-md-4">
+                    <div>
+                        <img class="avatar" src="data:image/jpeg;base64,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" alt="Newton">
+                        <h4>Newton</h4>
+                        <p>The first example of Celtic style writing was related to the insular scripts, and one characteristic feature of it is that a large and decorated initial letter is used at the beginning of text, paragraph and then text followed become smaller gradually until the regular size is reached</p>
+                    </div>
+                </li>
+                <li class="comment col col-12 col-md-4">
+                    <div>
+                        <img class="avatar" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAutaonK9CW3KPrxixGJaWOWq7zWr8qvzn2FncS5z0NunRVdac" alt="Iron Man">
+                        <h4>Iron Man</h4>
+                        <p>While pursuing an old style Celtic look, it also maintains the readability. The font is multilingual friendly with a support of some unusual diacritic letters in languages such as Cornish, Tagalog, Romanian, Ulithian and Welsh.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="container contact-info">
+            <div class="row">
+                <div class="half-contact-info col col-12 col-md-6 p-5 align-item-center">
+                    <div class="container px-5">
+                        <h3>Đăng Nhập</h3>
+                        <br/>
+                        <form action="/KhachHang/dang_nhap" class="" method="POST">
+                            <div class="form-group">
+                                <label>Tên đăng nhập:</label>
+                                <input type="text" class="form-control" id="ten-dang-nhap" name="tenDangNhap"/>
+                            </div>
+                            <div class="form-group">
+                                <label>Mật khẩu:</label>
+                                <input type="password" class="form-control" id="mat-khau" name="matKhau"/>
+                            </div>
+                            <input type="submit" class="btn btn-primary" name="Dang Nhap"/>
+                        </form>
+                    </div>
+                </div>
+                <div class="half-contact-info col col-12 col-md-6">
+                    <div class="d-flex flex-column">
+                        <div class="contact flex-fill">
+                            <iframe  id="gmap_canvas" src="https://maps.google.com/maps?q=Havana tower&t=&z=17&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                        </div>
+                        <div class="contact flex-fill mt-4">
+                            <p>
+                                While pursuing an old style Celtic look, it also maintains the readability. The font is multilingual friendly with a support of some unusual diacritic letters in languages such as Cornish, Tagalog, Romanian, Ulithian and Welsh.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let imgList = [
+            "http://www.the-blockchain.com/wp-content/uploads/2018/02/Vitale-Guestroom-King-03-PD0912-CRPD1600x760.jpg", 
+            "https://www.buergenstock.ch/media/12479/1_Exterior-Lakeview-Balconies.jpg",
+            "http://www.hotelimperialeroma.it/data/mobile/hotel-imperiale-roma-camere-01-2.jpg"
+        ]
+        let index = 0;
+        setInterval(() => {
+            index = (index + 1) % 3;
+            $("#background-image").animate({
+                opacity: 0
+            }, function(){
+                $("#background-image").attr("src", imgList[index]);
+                return $("#background-image").animate({
+                    opacity: 1
+                })
+            });
+        }, 10000);
+    </script>
+</body>
+</html>

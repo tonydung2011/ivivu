@@ -1,0 +1,67 @@
+﻿#background-image {
+    height: calc(100vh - 90px)
+}
+
+.background-container {
+    height: calc(100vh - 90px)
+}
+
+.hover-on-background {
+    height: 100vh;
+    width: 100vw;
+    z-index: 1;
+    left: 0;
+    top: 0
+}
+
+.background-caption {
+    font-size: 800%;
+    background-color: #DEE2FF;
+    opacity: 0.5;
+    text-align: center
+}
+
+.customer-comment {
+    overflow-x: hidden
+}
+
+#comment-list {
+    list-style-type: none;
+    width: 100vw
+}
+
+.overflow-x {
+    overflow-x: hidden;
+    width: 100%
+}
+
+.comment {
+    margin-left: 10;
+    margin-right: 10;
+    padding: 1em;
+    text-align: center
+}
+
+.avatar {
+    border-radius: 50%;
+    width: 12vw;
+    height: 12vw;
+    margin-bottom: 1em
+}
+
+#gmap_canvas {
+    width: 100%;
+    height: 100%
+}
+
+.contact {
+    width: 100%;
+    height: 30vh
+}
+
+.contact-info {
+    height: 30vh
+}
+
+.half-contact-info {
+}

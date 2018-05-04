@@ -3,8 +3,15 @@
 <head>
     <title>@ViewBag.Title</title>
     <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="../../Scripts/jquery-3.0.0.min.js"></script>
+    <link rel="stylesheet" href="../../Content/share.css">
 </head>
 <body>
-	@RenderBody()
+    @Html.Partial("_Header")
+    <div class="conatainer p-5">
+	    @RenderBody()
+    </div>
+    @Html.Partial("_Footer")
 </body>
 </html>

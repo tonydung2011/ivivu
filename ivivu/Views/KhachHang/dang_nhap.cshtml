@@ -3,15 +3,18 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>dang_nhap</h2>
-<form action="/KhachHang/dang_nhap" method="POST">
-    <div>
-        <label>Ten Dang Nhap:</label>
-        <input type="text" id="ten-dang-nhap" name="tenDangNhap"/>
-    </div>
-    <div>
-        <label>Mat Khau:</label>
-        <input type="password" id="mat-khau" name="matKhau"/>
-    </div>
-    <input type="submit" name="Dang Nhap"/>
-</form>
+<div class="container px-5">
+    <h3>Đăng Nhập</h3>
+    <br/>
+    <form action="/KhachHang/dang_nhap" class="" method="POST">
+        <div class="form-group">
+            <label>Tên đăng nhập:</label>
+            <input type="text" class="form-control" id="ten-dang-nhap" name="tenDangNhap"/>
+        </div>
+        <div class="form-group">
+            <label>Mật khẩu:</label>
+            <input type="password" class="form-control" id="mat-khau" name="matKhau"/>
+        </div>
+        <input type="submit" class="btn btn-primary" name="Dang Nhap"/>
+    </form>
+</div>
