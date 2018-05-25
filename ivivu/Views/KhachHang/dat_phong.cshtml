@@ -1,0 +1,71 @@
+﻿@model ivivu.Models.KhachSan
+
+@{
+    ViewBag.Title = "dat_phong";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="../../Content/KhachHang/dat_phong.css" />
+<div class="m-0">
+    <div id="header">
+        <img id="header-image"/>
+        <div id="gradient" class="d-flex flex-column justify-content-center align-items-center">
+            <div>
+                <h2 class="text-uppercase text-title">@Model.tenKS</h2>
+            </div>
+            <div>
+                <div id="stars" />
+            </div>
+        </div>
+    </div>
+
+    <div class="container description p-5">
+        <p class="fade-text text-justify">@Model.moTa.Trim()</p>
+    </div>
+
+    <div class="mt-5">
+        <div>
+            <form action="/KhachHang/dat_phong?id1=@ViewBag.idKS&id2=@ViewBag.idLP" method="POST" id="DateForRentForm">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6 col-12 text-justify">
+                            <label>Từ ngày:</label>
+                            <input type="date" name="startDay" class="dateInput form-control" form="DateForRentForm" placeholder=""/>
+                        </div>
+                        <div class="col-sm-6 col-12 text-justify">
+                            <label>Đến ngày:</label>
+                            <input type="date" name="endDay" class="dateInput form-control" form="DateForRentForm" placeholder=""/>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="d-flex justify-content-center">
+                        <div class="w-25">
+                            <input name="Đặt phòng" form="DateForRentForm" type="submit" class="btn btn-primary w-100"/>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="" id="result-booking">
+        
+    </div>
+    <div class="endding"/>
+</div>
+<script>
+    let index = 0;
+    index = Math.floor((Math.random() * 2));
+    src = [
+        "https://www.maxpixel.net/static/photo/640/Glass-Hotel-Maritime-Facade-Building-Window-6475.jpg",
+        "https://www.maxpixel.net/static/photo/640/Room-Travel-Hotel-Tourism-Decoration-Architectural-389256.jpg",
+        "https://www.maxpixel.net/static/photo/640/Girl-Vacation-Travel-Outdoors-Holiday-Hotel-1210073.jpg",
+    ];
+    setTimeout(() => {
+        $("#header-image").attr("src", src[index]);
+        let star = "";
+        for (index = 0; index < @Model.soSao; index ++) {
+            star += "<i class='glyphicon fa fa-star-o stars'></i>";
+        }
+        $("#stars").html(star);
+    }, 500);
+</script>

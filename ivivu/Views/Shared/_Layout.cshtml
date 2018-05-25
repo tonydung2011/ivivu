@@ -4,14 +4,17 @@
     <title>@ViewBag.Title</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-    <script src="../../Scripts/jquery-3.0.0.min.js"></script>
     <link rel="stylesheet" href="../../Content/share.css">
+    <link rel="stylesheet" href="../../Content/font-awesome.min.css">
+    <script src="../../Scripts/jquery-3.0.0.min.js"></script>
 </head>
-<body>
+<body style="
+    background-color: rgb(250, 250, 250);
+">
     @Html.Partial("_Header")
-    <div class="conatainer p-5">
+    <div class="mainBody">
 	    @RenderBody()
     </div>
-    @Html.Partial("_Footer")
+    <!-- @Html.Partial("_Footer") -->
 </body>
 </html>

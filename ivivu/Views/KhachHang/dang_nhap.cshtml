@@ -3,18 +3,26 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container px-5">
-    <h3>Đăng Nhập</h3>
-    <br/>
-    <form action="/KhachHang/dang_nhap" class="" method="POST">
-        <div class="form-group">
-            <label>Tên đăng nhập:</label>
-            <input type="text" class="form-control" id="ten-dang-nhap" name="tenDangNhap"/>
+<div class="container pt-5 px-5">
+    <div class="row">
+        <div class="col-lg-3 col-sm-1"></div>
+        <div class="col-lg-6 col-sm-10">
+            <h3>Đăng Nhập</h3>
+            <br/>
+            <form action="/KhachHang/dang_nhap" class="" method="POST">
+                <div class="form-group">
+                    <label>Tên đăng nhập:</label>
+                    <input type="text" class="form-control" id="ten-dang-nhap" name="tenDangNhap"/>
+                </div>
+                <div class="form-group">
+                    <label>Mật khẩu:</label>
+                    <input type="password" class="form-control" id="mat-khau" name="matKhau"/>
+                </div>
+                <input type="submit" class="btn btn-primary" value="Đăng Nhập"/>
+            </form>
+            <br/>
+            <p>Chưa có tài khoản? <span><a href="/KhachHang/dang_ky" class="btn btn-default">Đăng ký</a></span></p>
         </div>
-        <div class="form-group">
-            <label>Mật khẩu:</label>
-            <input type="password" class="form-control" id="mat-khau" name="matKhau"/>
-        </div>
-        <input type="submit" class="btn btn-primary" name="Dang Nhap"/>
-    </form>
+        <div class="col-lg-3 col-sm-1"></div>
+    </div>
 </div>

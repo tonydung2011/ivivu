@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "thong_ke_hoa_don";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="../../Content/QuanTri/thong_ke_hoa_don.css">
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3">
+            <div class="d-flex flex-column justify-content-around pl-3 pt-5">
+                <div class="side-button">
+                    <a class="btn btn-info w-100 text-center light-text">+ Tạo Mới</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-9">
+            <div class="pr-5">
+                <div class="title d-flex flex-row align-items-stretch">
+                    <div class="p-4">
+                        <h3 class="text-justify text-capitalize m-0">thống kê hoá đơn</h3>
+                    </div>
+                </div>
+                <div>
+                    <table id="statistics" class="display mt-4 table table-striped table-bordered" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th class="text-capitalize font-weight-bold">mã hoá đơn</th>
+                                <th class="text-capitalize font-weight-bold">ngày thanh toán</th>
+                                <th class="text-capitalize font-weight-bold">mã đặt phòng</th>
+                                <th class="text-capitalize font-weight-bold">tổng tiền</th>
+                            </tr>
+                        </thead>
+                        <tfoot>                            
+                            <tr>
+                                <th class="text-capitalize font-weight-bold">mã hoá đơn</th>
+                                <th class="text-capitalize font-weight-bold">ngày thanh toán</th>
+                                <th class="text-capitalize font-weight-bold">mã đặt phòng</th>
+                                <th class="text-capitalize font-weight-bold">tổng tiền</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"/>
+    <script>
+        alert('helo');
+        $(document).ready(function() {
+            console.log('ready');
+            $('#statistics').DataTable({
+                "processing": true,
+                "serverSide": true,
+                "ajax": "/api/HoaDon",
+            });
+        })
+    </script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"/>
+</div>

@@ -13,15 +13,15 @@ namespace ivivu.Models
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
-        public DateTime ngayBatDau { get; set; }
+        public DateTime? ngayBatDau { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
-        public DateTime ngayTraPhong { get; set; }
+        public DateTime? ngayTraPhong { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
-        public DateTime ngayDat { get; set; }
+        public DateTime? ngayDat { get; set; }
 
         public int donGia { get; set; }
 

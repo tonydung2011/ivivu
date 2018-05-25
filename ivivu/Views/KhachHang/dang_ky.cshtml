@@ -1,39 +1,48 @@
 ﻿@model ivivu.Models.KhachHang 
 
-<h2>Dang Ky Thong Tin</h2>
-
-@using (Html.BeginForm("dang_ky", "KhachHang", FormMethod.Post)){
-    <div>
-        @Html.LabelFor(model => model.hoTen, "Ho va Ten: ")
-        @Html.TextBoxFor(model => model.hoTen)
+<div class="container-fluid auto mt-5">
+    <div class="row">
+        <div class="col-lg-3 col-sm-1"></div>
+        <div class="col-lg-6 col-sm-10">
+            <h2>Đăng Ký Thông Tin</h2>
+            <div class="container">
+                @using (Html.BeginForm("dang_ky", "KhachHang", FormMethod.Post)){
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.hoTen, "Họ và tên: ")
+                        @Html.TextBoxFor(model => model.hoTen, new { @class = "form-control"})
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.tenDangNhap, "Tên đăng nhập: ")
+                        @Html.TextBoxFor(model => model.tenDangNhap, new { @class="form-control"})
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.matKhau, "Mật khẩu: ")
+                        @Html.PasswordFor(model => model.matKhau, new { @class="form-control"})
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.soCMND, "Số Chứng minh nhân dân: ")
+                        @Html.TextBoxFor(model => model.soCMND, new { @class="form-control"})
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.soDienThoai, "Số Điện thoaị: ")
+                        @Html.TextBoxFor(model => model.soDienThoai, new { @class="form-control"})
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.diaChi, "Địa chỉ: ")
+                        @Html.TextBoxFor(model => model.diaChi, new { @class="form-control"})
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.email, "Email: ")
+                        @Html.TextBoxFor(model => model.email, new { @class="form-control"})
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.moTa, "Mô tả: ")
+                        @Html.TextAreaFor(model => model.moTa, new { @class="form-control"})
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="Đăng ký" />
+                }
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-1"></div>
     </div>
-    <div>
-        @Html.LabelFor(model => model.tenDangNhap, "Ten dang nhap: ")
-        @Html.TextBoxFor(model => model.tenDangNhap)
-    </div>
-    <div>
-        @Html.LabelFor(model => model.matKhau, "Mat Khau: ")
-        @Html.PasswordFor(model => model.matKhau)
-    </div>
-    <div>
-        @Html.LabelFor(model => model.soCMND, "So Chung Minh Nhan Dan: ")
-        @Html.TextBoxFor(model => model.soCMND)
-    </div>
-    <div>
-        @Html.LabelFor(model => model.soDienThoai, "So Dien Thoai: ")
-        @Html.TextBoxFor(model => model.soDienThoai)
-    </div>
-    <div>
-        @Html.LabelFor(model => model.diaChi, "Dia Chi: ")
-        @Html.TextBoxFor(model => model.diaChi)
-    </div>
-    <div>
-        @Html.LabelFor(model => model.email, "Email: ")
-        @Html.TextBoxFor(model => model.email)
-    </div>
-    <div>
-        @Html.LabelFor(model => model.moTa, "Mo ta: ")
-        @Html.TextAreaFor(model => model.moTa)
-    </div>
-    <input type="submit" value="Dang Ky"/>   
-}
+</div>

@@ -30,6 +30,9 @@ Kết nối với Database:
   + Id=<ten dang nhap database cua ban>
   + Password=<password dang nhap database cua ban>
 
+ connection string tutorial:
+ https://msdn.microsoft.com/library/jj653752.aspx
+
 Thiết kế route và các nghiệp vụ cần tin học hoá:
 
  - <địc chỉ máy, mặc định = 127.0.0.1:8080>/QuanTri/<Controller>/<method name or View name>?<parametter list>

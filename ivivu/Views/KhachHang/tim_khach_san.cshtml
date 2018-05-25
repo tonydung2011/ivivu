@@ -1,0 +1,105 @@
+﻿@model List<ivivu.Models.KhachSan>
+<link rel="stylesheet" href="../../Content/KhachHang/tim_khach_san.css">
+@{
+    ViewBag.Title = "tim_khach_san";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container  pt-5 wrapper">
+    <div class="d-flex search-wrapper flex-row row mb-5">
+        <form class="form-inline w-100" action="/KhachHang/tim_khach_san" method="POST" id="main-search">
+            <input type="text" class="col-lg-10 col-sm-8" id="search-input" name="name" placeholder="Tên khách sạn, để trống nếu muốn tìm tất cả khách sạn thoả tiêu chí"/>
+            <input type="submit" class="col-lg-2 col-sm-4 btn-primary" id="search-button" />
+        </form>
+    </div>
+    <div class="main-body mt-5 p-0 row">
+        <div class="clear-text col-lg-3 col-12">
+            <div class="form-group d-block">
+                <label class="mr-1">Số sao:</label>
+                <select id="rating" name="star" form="main-search">
+                    <option value=0>Bất kỳ</option>
+                    <option value=1>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                    <option value=4>4</option>
+                    <option value=5>5</option>
+                </select>
+                Sao
+            </div>
+            <div class="form-group d-block">
+                <label class="d-inline">Đường:</label>
+                <input type="text" form="main-search" class="form-control d-inline text-side-input fade-text" id="street" name="street"  />
+            </div>
+            <div class="form-group d-block">
+                <label class="d-inline">Quận:</label>
+                <input type="text" form="main-search" class="form-control d-inline text-side-input fade-text" id="district" name="district" />
+            </div>
+            <div class="form-group d-block">
+                <label class="d-inline">Thành Phố:</label>
+                <input type="text" form="main-search" class="form-control d-inline text-side-input fade-text" id="city" name="city" />
+            </div>
+            <div class="form-group d-block">
+                <label class="d-inline">Giá từ:</label>
+                <input type="text" form="main-search" class="form-control d-inline text-side-input fade-text" id="priceFrom" name="priceFrom" placeholder="150000"/>
+            </div>
+            <div class="form-group d-block">
+                <label class="d-inline">Đến:</label>
+                <input type="text" form="main-search" class="form-control d-inline text-side-input fade-text" id="priceTo" name="priceTo" placeholder="500000"/>
+            </div>
+            <div class="form-group d-block">
+                <label class="d-inline">Bỏ qua:</label>
+                <input type="text" form="main-search" class="form-control d-inline text-side-input fade-text" id="takeFrom" name="takeFrom" placeholder="0"/>
+            </div>
+        </div>
+        <div class="main-wrapper col-lg-6 col-12 clear-text">
+            <div class="result-header d-flex flex-row justify-content-between">
+                <div class="d-inline pt-2">
+                    <p>Kết Quả</p>
+                    <p id="number-result"></p>
+                </div>
+                <div class="d-inline pt-2">
+                    <label>Sắp xếp theo:</label>
+                    <select id="option">
+                        <option value="price-asc">Giá tăng dần</option>
+                        <option value="price-des">Giá giảm dần</option>
+                        <option selected="selected" value="name-asc">Tên tăng dần</option>
+                        <option value="name-des">Tên tăng dần</option>
+                    </select>
+                </div>
+            </div>
+            <div class="result-body">
+                @if (@Model != null)
+                {
+                    foreach (var item in @Model)
+                    {
+                        <a href="/KhachHang/thong_tin_khach_san/@item.MaKS.Trim()">
+                            <div class="item-result pb-3">
+                                <div class="d-flex flex-row justify-content-between my-0">
+                                    <p class="mb-0"><b>@item.tenKS</b></p>
+                                    <p class="mb-0"><b>@item.giaTB VND</b></p>
+                                </div>
+                                <div class=" d-flex flex-row my-0">
+                                    <p class="text-info mr-2">Rating: @item.soSao stars</p>
+                                    <p class="text-muted mr-2">
+                                        <span>@item.soNha, </span>
+                                        <span>@item.duong, </span>
+                                        <span>@item.quan, </span>
+                                        <span>@item.thanhPho</span>
+                                    </p>
+                                </div>
+                                <div class="hidden">
+                                    <p>@item.moTa</p>
+                                </div>
+                            </div>
+                        </a>
+                    }
+                }
+            </div>
+        </div>
+        <div class="right-wrapper col-lg-3 col-sm-12">
+            <div class="suggest-hotel"></div>
+            <div class="suggest-room"></div>
+            <div class="suggest-room-type"></div>
+        </div>
+    </div>
+</div>

@@ -81,6 +81,8 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />
@@ -91,6 +93,9 @@
     <Folder Include="DAL\" />
     <Folder Include="filter\" />
     <Folder Include="role\" />
+    <Folder Include="Content\KhachHang\" />
+    <Folder Include="Scripts\KhachHang\" />
+    <Folder Include="Content\QuanTri\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
@@ -117,10 +122,11 @@
     <Compile Include="Controllers\QuanTriController.cs" />
     <Compile Include="filter\QuanTriAuthenticationFilter.cs" />
     <Compile Include="Models\QuanTri.cs" />
+    <Compile Include="Controllers\HoaDonController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
@@ -128,7 +134,7 @@
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
     <Content Include="Views\KhachHang\dang_ky.cshtml" />
-    <Content Include="Views\KhachHang\Index.cshtml" />
+    <Content Include="Views\KhachHang\index.cshtml" />
     <Content Include="Scripts\jquery-3.0.0.slim.min.js" />
     <Content Include="Scripts\jquery-3.0.0.slim.js" />
     <Content Include="Scripts\jquery-3.0.0.min.js" />
@@ -160,7 +166,7 @@
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Views\KhachHang\dang_nhap.cshtml" />
-    <Content Include="Views\QuanTri\Index.cshtml" />
+    <Content Include="Views\QuanTri\index.cshtml" />
     <Content Include="Views\QuanTri\chinh_sua_khach_san.cshtml" />
     <Content Include="Views\QuanTri\chinh_sua_loai_phong.cshtml" />
     <Content Include="Views\QuanTri\dang_nhap.cshtml" />
@@ -174,6 +180,22 @@
     <Content Include="Views\Shared\_Header.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Content\share.css" />
+    <Content Include="Views\KhachHang\tim_khach_san.cshtml" />
+    <Content Include="Views\KhachHang\thong_tin_khach_san.cshtml" />
+    <Content Include="Content\KhachHang\tim_khach_san.css" />
+    <Content Include="Content\KhachHang\thong_tin_khach_san.css" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\KhachHang\dat_phong.css" />
+    <Content Include="Views\KhachHang\dat_phong.cshtml" />
+    <Content Include="Views\QuanTri\thong_ke.cshtml" />
+    <Content Include="Views\QuanTri\thong_ke_hoa_don.cshtml" />
+    <Content Include="Content\QuanTri\thong_ke_hoa_don.css" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\jquery-3.0.0.slim.min.map" />
@@ -202,6 +224,7 @@
     <None Include="Content\bootstrap-reboot.css.map" />
     <None Include="Content\bootstrap-grid.min.css.map" />
     <None Include="Content\bootstrap-grid.css.map" />
+    <None Include="fonts\fontawesome-webfont.woff2" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

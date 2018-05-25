@@ -8,9 +8,9 @@ namespace ivivu.Models
         [Key]
         public string maHD { get; set; }
 
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
-		public DateTime ngayThanhToan { get; set; }
+		[DataType(DataType.Date)]
+		[DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+		public DateTime? ngayThanhToan { get; set; }
 
 		public int tongTien { get; set; }
 

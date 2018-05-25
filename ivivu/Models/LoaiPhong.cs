@@ -11,8 +11,7 @@ namespace ivivu.Models
 		public string tenLoaiPhong { get; set; }
 		public string maKS { get; set; }
 
-        [DataType(DataType.Currency)]
-		public object donGia { get; set; }
+		public int donGia { get; set; }
 
 		public string moTa { get; set; }
 		public int slTrong { get; set; }

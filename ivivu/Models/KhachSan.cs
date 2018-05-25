@@ -14,9 +14,8 @@ namespace ivivu.Models
         public string duong { get; set; }
         public string quan { get; set; }
         public string thanhPho { get; set; }
-
-        [DataType(DataType.Currency)]
-        public object giaTB { get; set; }
+        
+        public int giaTB { get; set; }
 
         public string moTa { get; set; }
     }

@@ -28,3 +28,19 @@
     bottom: 0;
     color: #DCEDB9;
 }
+
+.fade-text {
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.clear-text {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.title-text {
+    color: #F4EBBE;
+}
+
+.no-under-line {
+    text-decoration: none !important;
+}

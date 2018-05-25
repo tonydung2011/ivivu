@@ -1,0 +1,69 @@
+﻿@model ivivu.Models.KhachSan
+
+@{
+    ViewBag.Title = "thong_tin_khach_san";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<ivivu.Models.LoaiPhong> loaiPhongs = ViewBag.roomClassColl;
+}
+
+<link rel="stylesheet" href="../../Content/KhachHang/thong_tin_khach_san.css" />
+<div class="m-0">
+    <div id="header">
+        <img id="header-image"/>
+        <div id="gradient" class="d-flex flex-column justify-content-center align-items-center">
+            <div>
+                <h2 class="text-uppercase text-title">@Model.tenKS</h2>
+            </div>
+            <div>
+                <div id="stars" />
+            </div>
+
+        </div>
+    </div>
+
+    <div class="my-5 justify-content-center align-items-center d-flex">
+        <div>
+            <p class="text-uppercase text-title text-center">Đặt vé ngay</p>
+            <p class="clear-text">Giá rẽ hơn với đặt vé trực tuyến, <span class="fade-text">nhanh hơn & giảm chờ đợi</span></p>
+        </div>
+    </div>
+
+    <div class="container d-flex flex-row mt-5 p-1">
+        @foreach (var item in loaiPhongs)
+        {
+            <a href="/KhachHang/dat_phong?id1=@Model.MaKS.Trim()&id2=@item.maLoaiPhong.Trim()" class="no-under-line">
+                <div class="room-class-container m-3">
+                    <div class="upper d-flex flex-comlumn justify-content-center align-items-center">
+                        <div>
+                            <p class="text-center text-title font-weight-bold">@item.tenLoaiPhong</p>
+                        </div>
+                    </div>
+                    <div class="lower d-flex justify-content-center align-items-center">
+                        <div>
+                            <p class="small-world fade-text mb-0">Giá từ</p>
+                            <p class="price clear-text text-title mb-0">@item.donGia VND</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        }
+    </div>
+</div>
+
+<script>
+    let index = 0;
+    index = Math.floor((Math.random() * 2));
+    src = [
+        "https://www.maxpixel.net/static/photo/640/Glass-Hotel-Maritime-Facade-Building-Window-6475.jpg",
+        "https://www.maxpixel.net/static/photo/640/Room-Travel-Hotel-Tourism-Decoration-Architectural-389256.jpg",
+        "https://www.maxpixel.net/static/photo/640/Girl-Vacation-Travel-Outdoors-Holiday-Hotel-1210073.jpg",
+    ];
+    setTimeout(() => {
+        $("#header-image").attr("src", src[index]);
+        let star = "";
+        for (index = 0; index < @Model.soSao; index ++) {
+            star += "<i class='glyphicon fa fa-star-o stars'></i>";
+        }
+        $("#stars").html(star);
+    }, 500);
+</script>

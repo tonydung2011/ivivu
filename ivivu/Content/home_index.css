@@ -1,13 +1,15 @@
 ﻿#background-image {
-    height: calc(100vh - 90px)
+    overflow: hidden;
+    width: 100vw;
+    height: calc(80vh - 90px);
 }
 
 .background-container {
-    height: calc(100vh - 90px)
+    height: calc(80vh - 90px)
 }
 
 .hover-on-background {
-    height: 100vh;
+    height: 80vh;
     width: 100vw;
     z-index: 1;
     left: 0;

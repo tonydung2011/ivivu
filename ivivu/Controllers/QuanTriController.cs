@@ -21,9 +21,9 @@ namespace ivivu.Controllers
         }
 
         [QuanTriAuthenticationFilter]
-        public ActionResult Index()
+        public ActionResult index()
         {
-            return View ();
+			return RedirectToAction("dang_nhap", "QuanTri");
         }
 
         // hien thi giao dien them khach san moi
@@ -140,7 +140,7 @@ namespace ivivu.Controllers
             {
                 Session["QuanTriID"] = Guid.NewGuid();
                 Session["User"] = tenDangNhap;
-                return RedirectToAction("Index", "QuanTri");
+                return RedirectToAction("thong_ke_hoa_don", "QuanTri");
             }
             else
             {
@@ -153,6 +153,18 @@ namespace ivivu.Controllers
         {
             Session.Abandon();
             return RedirectToAction("dang_nhap", "QuanTri");
+        }
+
+		[QuanTriAuthenticationFilter]
+		public ActionResult thong_ke()
+		{
+			return View();
+		}
+
+		[QuanTriAuthenticationFilter]
+        public ActionResult thong_ke_hoa_don()
+        {
+            return View();
         }
     }
 }

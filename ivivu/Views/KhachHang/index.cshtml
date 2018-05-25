@@ -1,0 +1,21 @@
+﻿@model ivivu.Models.KhachHang
+@{
+    ViewBag.Title = "Thong tin Co Ban";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="d-flex flex-row w-100 justify-content-between">
+        <div>
+            <h3 class="text-capitalize">Thông tin đặt phòng</h>
+        </div>
+        <div>
+            <form action="/KhachHang/dang_xuat" method="POST" id="dang-xuat">
+                <input type="submit" value="Đăng xuất" class="btn btn-danger"/>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- them phan thong tin co ban khach hang tai day -->
+<!-- @Model.tenDangNhap, @Model.diaChi, ... -->
