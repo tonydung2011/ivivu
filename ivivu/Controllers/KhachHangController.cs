@@ -78,14 +78,18 @@ namespace ivivu.Controllers
 			if (didSearch == "true") {
 				List<KhachSan> khachSans;
                 khachSans = ivivuDB.timKhachSanTheoYeuCau(name, district, street, city, priceFrom, priceTo, star, takeFrom);
-				khachSans.ForEach((ks) =>
-				{
-					ks.tenKS = ks.tenKS.Normalize();
-					ks.duong = ks.duong.Normalize();
-					ks.quan = ks.quan.Normalize();
-					ks.thanhPho = ks.thanhPho.Normalize();
-				});
-                return View(khachSans);				
+                if (khachSans != null)
+                {
+                    khachSans.ForEach((ks) =>
+                    {
+                        ks.tenKS = ks.tenKS.Normalize();
+                        ks.duong = ks.duong.Normalize();
+                        ks.quan = ks.quan.Normalize();
+                        ks.thanhPho = ks.thanhPho.Normalize();
+                    });
+                    return View(khachSans);
+                }
+                return View();			
 			} else {
 				return View();
 			}
@@ -101,7 +105,7 @@ namespace ivivu.Controllers
 		}
 
 		[UserAuthenticationFilter]
-		public ActionResult dat_phong(string id1, string id2, DateTime start, DateTime end, string didbook)
+		public ActionResult dat_phong(string id1, string id2, string startString, string endString, string didbook)
 		{
 			if (didbook != "true") {
 				KhachSan khachSan = ivivuDB.timKhachSan(id1);
@@ -114,10 +118,13 @@ namespace ivivu.Controllers
                 LoaiPhong loaiPhong = ivivuDB.timLoaiPhong(id2);
                 ViewBag.idKS = id1;
                 ViewBag.idLP = id2;
-				if (start.CompareTo(end) >= 0) {
+                DateTime startDay = DateTime.Parse(startString);
+                DateTime endDay = DateTime.Parse(endString);
+                if (startDay.CompareTo(endDay) >= 0) {
 					return RedirectToAction("dat_phong", "KhachHang", new { id1, id2});
 				}
-				List<Phong> listPhong = ivivuDB.timPhongTrongTheoNgay(start, end, id2);
+				List<Phong> listPhong = ivivuDB.timPhongTrongTheoNgay(startString, endString, id2);
+                ViewBag.listPhong = listPhong;
                 return View(khachSan);
 			}
 		}
@@ -126,7 +133,9 @@ namespace ivivu.Controllers
 		public ActionResult dat_phong(string id1, string id2, DateTime startDay, DateTime endDay)
         {
 			string didbook = "true";
-			return RedirectToAction("dat_phong", "KhachHang", new { id1, id2, startDay, endDay, didbook });
+            string startString = startDay.ToShortDateString();
+            string endString = endDay.ToShortDateString();
+			return RedirectToAction("dat_phong", "KhachHang", new { id1, id2, startString, endString, didbook });
         }
     }
 }

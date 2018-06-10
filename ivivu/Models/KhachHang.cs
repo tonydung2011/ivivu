@@ -6,7 +6,7 @@ namespace ivivu.Models
     public class KhachHang
     {
         [Key]
-        public long maKh { get; set; }
+        public long maKH { get; set; }
         
         public String hoTen { get; set; }
         public String tenDangNhap { get; set; }

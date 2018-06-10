@@ -12,7 +12,7 @@ namespace ivivu.Models
 		[DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
 		public DateTime? ngayThanhToan { get; set; }
 
-		public int tongTien { get; set; }
+		public Int32 tongTien { get; set; }
 
 		public string maDP { get; set; }
     }

@@ -89,20 +89,11 @@ namespace ivivu.lib
 
         public bool themKhachHang(KhachHang kh)
         {
-            kh.maKh = DateTime.Now.Ticks;
+            kh.maKH = DateTime.Now.Ticks;
             try
             {
-				db.Database.ExecuteSqlCommand("ThemKhachHang @maKH, @hoTen, @tenDangNhap, @matKhau, @soCMND, @diaChi, @soDienThoai, @moTa, @email",
-											  new SqlParameter("@maKH", kh.maKh),
-											  new SqlParameter("@hoTen", kh.hoTen),
-											  new SqlParameter("@tenDangNhap", kh.tenDangNhap),
-											  new SqlParameter("@matKhau", kh.matKhau),
-											  new SqlParameter("@soCMND", kh.soCMND),
-											  new SqlParameter("@diaChi", kh.diaChi),
-											  new SqlParameter("@soDienThoai", kh.soDienThoai),
-											  new SqlParameter("@moTa", kh.moTa),
-											  new SqlParameter("@email", kh.email)
-											 );
+                db.KhachHangs.Add(kh);
+                db.SaveChanges();
                 return true;
             }
             catch(Exception e)
@@ -140,10 +131,10 @@ namespace ivivu.lib
 			} else {
 				intStar = 0;
 			}
-			if (name == "") name = null;
-			if (district == "") district = null;
-			if (street == "") street = null;
-			if (city == "") city = null;
+			if (name == "" || name == null) name = "null";
+			if (district == "" || district == null) district = "null";
+			if (street == "" || street == null) street = "null";
+			if (city == "" || city == null) city = "null";
 			if (takeFrom != "") 
 			{
 				if (Int32.TryParse(takeFrom, out temp))
@@ -156,15 +147,16 @@ namespace ivivu.lib
                 }
 			}
 			try {
-				var result = db.Database.SqlQuery<KhachSan>("TimKhachSan @tenKS, @duong, @quan, @thanhpho, @sosao, @giaTu, @giaDen",
-															 new SqlParameter("@tenKS", name),
-															 new SqlParameter("@duong", street),
-															 new SqlParameter("@quan", district),
-															 new SqlParameter("@thanhPho", city),
-															 new SqlParameter("@soSao", intStar),
-															 new SqlParameter("@giaTu", intPriceFrom),
-															 new SqlParameter("@giaDen", intPriceTo)
-				                                           ).Take(20).Skip(intFrom);
+                //  var result = db.Database.SqlQuery<KhachSan>("TimKhachSan @tenKS, @duong, @quan, @thanhpho, @sosao, @giaTu, @giaDen",
+                // 											 new SqlParameter("@tenKS", name),
+                //     										 new SqlParameter("@duong", street),
+                // 											 new SqlParameter("@quan", district),intStar
+                // 											 new SqlParameter("@thanhPho", city),
+                // 											 new SqlParameter("@soSao", ),
+                // 											 new SqlParameter("@giaTu", intPriceFrom),
+                // 											 new SqlParameter("@giaDen", intPriceTo)
+                var result = db.Database.SqlQuery<KhachSan>($"TimKhachSan {name}, {street}, {district}, {city}, {intStar}, {intPriceFrom}, {intPriceTo}"
+                                                                ).Take(20).Skip(intFrom);
 				return result.ToList();
             } catch (Exception e) {
 				Console.WriteLine(e.ToString());
@@ -182,19 +174,11 @@ namespace ivivu.lib
 			return db.Phongs.Where(p => (p.loaiPhong == id)).ToList();
 		}
 
-		public List<Phong> timPhongTrongTheoNgay(DateTime start, DateTime end, string loaiPhong)
+		public List<Phong> timPhongTrongTheoNgay(string start, string end, string loaiPhong)
 		{
 			try
             {
-				var startDate = new SqlParameter("@start", SqlDbType.Date, 60);
-				startDate.Direction = ParameterDirection.Input;
-				start = DateTime.ParseExact(start.ToString(), "yyyy-mm-dd hh:mm:ss.fff", null);
-				startDate.Value = start;
-                var endDate = new SqlParameter("@end", end.Date);
-				endDate.Direction = ParameterDirection.Input;
-                end = DateTime.ParseExact(end.ToString(), "yyyy-mm-dd hh:mm:ss.fff", null);
-                endDate.Value = end;
-				var result = db.Database.SqlQuery<Phong>("TimPhongTrongTheoNgay @start, @end",startDate , endDate);
+				var result = db.Database.SqlQuery<Phong>($"TimPhongTrongTheoNgay {start}, {end}, {loaiPhong}");
                 return result.ToList();
             }
             catch (Exception e)
@@ -204,14 +188,33 @@ namespace ivivu.lib
             }
 		}
 
-		public IEnumerable<Object> layTatCaHoaDon()
+		public List<HoaDon> layTatCaHoaDon()
 		{
-			return db.HoaDons.Where(hd => hd.ngayThanhToan != null);
+			return db.HoaDons.Where(hd => hd.ngayThanhToan != null).ToList();
 		}
 
 		public HoaDon timHoaDon(string id)
 		{
 			return db.HoaDons.Find(id);
 		}
+
+        public bool themHoaDon(HoaDon hd)
+        {
+            try
+            {
+                db.HoaDons.Add(hd);
+                db.SaveChanges();
+                return true;
+            } catch(Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                return false;
+            }
+        }
+
+        public DatPhong timPhieuDatPhong(string id)
+        {
+            return db.DatPhongs.Find(id);
+        }
     }
 }

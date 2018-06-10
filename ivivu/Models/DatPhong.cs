@@ -9,7 +9,7 @@ namespace ivivu.Models
         public string maDP { get; set; }
 
         public string maLoaiPhong { get; set; }
-        public string maKh { get; set; }
+        public Int64 maKh { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]

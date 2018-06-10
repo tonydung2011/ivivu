@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewBag.Title = "thong_ke_dat_phong";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="../../Content/QuanTri/thong_ke_hoa_don.css">
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3">
+            <div class="d-flex flex-column justify-content-around pl-3 pt-5">
+            </div>
+        </div>
+        <div class="col-9">
+            <div class="pr-5">
+                <div class="title d-flex flex-row align-items-stretch">
+                    <div class="p-4">
+                        <h3 class="text-justify text-capitalize m-0">Thống kê Phiếu đặt Phòng</h3>
+                    </div>
+                </div>
+                <div>
+                    <table id="statistics" class="display mt-4 table table-striped table-bordered" style="width:100%">
+                        <thead>
+                        <th>Mã đặt phòng</th>
+                        <th>Mã khách hàng</th>
+                        <th>Mã Loại phòng</th>
+                        <th>đơn giá</th>
+                        <th>Ngày nhận phòng</th>
+                        <th>Ngày Trả phòng</th>
+                        <th>Hành động</th>
+                        </thead>
+                        <tbody id='table-content'></tbody>
+                    </table>
+                    <form id="tao-hoa-don" action="/QuanTri/them_hoa_don" method="POST"></form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: "/api/DatPhongs"
+            }).done(function (data) {
+                data = JSON.parse(data).data;
+                var content = ""
+                data.forEach(function(item){
+                    content += "<tr>";
+                    content += "<td>" + item.maDP + "</td>";
+                    content += "<td>" + item.maKh + "</td>";
+                    content += "<td>" + item.maLoaiPhong + "</td>";
+                    content += "<td>" + item.donGia + "</td>";
+                    content += "<td>" + item.ngayBatDau + "</td>";
+                    content += "<td>" + item.ngayTraPhong + "</td>";
+                    if (item.tinhTrang !== 'xac nhan' && item.tinhTrang !== 'xác nhận' && item.tinhTrang !== 'ÄÃ£ xÃ¡c nháº­n') {
+                        content += "<td><input type='submit' class='btn btn-info' form='tao-hoa-don' name='maDP' value='" + item.maDP + "'/></td>";
+                    } else {
+                        content += "<td></td>"
+                    }
+                    content += "</tr>";
+                })
+                $("#table-content").html(content);
+                $('#statistics').DataTable({
+                    paging: true,
+                    lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                });
+            })
+        });
+    </script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+</div>
+
