@@ -174,15 +174,7 @@
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Views\KhachHang\dang_nhap.cshtml" />
     <Content Include="Views\QuanTri\index.cshtml" />
-    <Content Include="Views\QuanTri\chinh_sua_khach_san.cshtml" />
-    <Content Include="Views\QuanTri\chinh_sua_loai_phong.cshtml" />
     <Content Include="Views\QuanTri\dang_nhap.cshtml" />
-    <Content Include="Views\QuanTri\danh_sach_khach_san.cshtml" />
-    <Content Include="Views\QuanTri\danh_sach_loai_phong.cshtml" />
-    <Content Include="Views\QuanTri\them_khach_san.cshtml" />
-    <Content Include="Views\QuanTri\them_loai_phong.cshtml" />
-    <Content Include="Views\QuanTri\thong_tin_khach_san.cshtml" />
-    <Content Include="Views\QuanTri\thong_tin_loai_phong.cshtml" />
     <Content Include="Content\home_index.css" />
     <Content Include="Views\Shared\_Header.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
@@ -200,7 +192,6 @@
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\KhachHang\dat_phong.css" />
     <Content Include="Views\KhachHang\dat_phong.cshtml" />
-    <Content Include="Views\QuanTri\thong_ke.cshtml" />
     <Content Include="Views\QuanTri\thong_ke_hoa_don.cshtml" />
     <Content Include="Content\QuanTri\thong_ke_hoa_don.css" />
   </ItemGroup>

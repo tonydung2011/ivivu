@@ -1,11 +1,13 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ivivu.Models
 {
     public class DatPhong
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public string maDP { get; set; }
 
         public string maLoaiPhong { get; set; }

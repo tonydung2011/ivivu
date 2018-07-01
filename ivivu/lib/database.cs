@@ -147,14 +147,6 @@ namespace ivivu.lib
                 }
 			}
 			try {
-                //  var result = db.Database.SqlQuery<KhachSan>("TimKhachSan @tenKS, @duong, @quan, @thanhpho, @sosao, @giaTu, @giaDen",
-                // 											 new SqlParameter("@tenKS", name),
-                //     										 new SqlParameter("@duong", street),
-                // 											 new SqlParameter("@quan", district),intStar
-                // 											 new SqlParameter("@thanhPho", city),
-                // 											 new SqlParameter("@soSao", ),
-                // 											 new SqlParameter("@giaTu", intPriceFrom),
-                // 											 new SqlParameter("@giaDen", intPriceTo)
                 var result = db.Database.SqlQuery<KhachSan>($"TimKhachSan {name}, {street}, {district}, {city}, {intStar}, {intPriceFrom}, {intPriceTo}"
                                                                 ).Take(20).Skip(intFrom);
 				return result.ToList();
@@ -178,7 +170,7 @@ namespace ivivu.lib
 		{
 			try
             {
-				var result = db.Database.SqlQuery<Phong>($"TimPhongTrongTheoNgay {start}, {end}, {loaiPhong}");
+				var result = db.Database.SqlQuery<Phong>($"TimPhongTrongTheoNgay \"{start}\", \"{end}\", \"{loaiPhong}\"");
                 return result.ToList();
             }
             catch (Exception e)
@@ -215,6 +207,50 @@ namespace ivivu.lib
         public DatPhong timPhieuDatPhong(string id)
         {
             return db.DatPhongs.Find(id);
+        }
+
+        public void datPhong(Int64 maKH, string maloaiPhong, DateTime start, DateTime end)
+        {
+            LoaiPhong loaiPhong = db.LoaiPhongs.Find(maloaiPhong);
+            DatPhong datPhong = new DatPhong()
+            {
+                maDP = DateTime.Now.Ticks.ToString(),
+                maKh = maKH,
+                maLoaiPhong = maloaiPhong,
+                ngayBatDau = start,
+                ngayTraPhong = end,
+                ngayDat = DateTime.Now,
+                donGia = loaiPhong.donGia,
+                moTa = loaiPhong.moTa,
+                tinhTrang = "Chưa Thanh Toán"
+            };
+            db.DatPhongs.Add(datPhong);
+            db.SaveChanges();
+        }
+
+        public void danhDauDatPhong(string maPhong, DateTime day, string TrangThai)
+        {
+            TrangThaiPhong trangThai = db.TrangThaiPhongs.Find(maPhong, day);
+            if (trangThai != null)
+            {
+                trangThai.tinhTrang = TrangThai;
+                db.SaveChanges();
+            }
+            else {
+                trangThai = new TrangThaiPhong()
+                {
+                    maPhong = maPhong,
+                    ngay = day,
+                    tinhTrang = TrangThai
+                };
+                db.TrangThaiPhongs.Add(trangThai);
+                db.SaveChanges();
+            }
+        }
+
+        public List<DatPhong> getDanhSachDatPhong(Int64 maKH)
+        {
+            return db.DatPhongs.Where(dp => dp.maKh == maKH).ToList();
         }
     }
 }

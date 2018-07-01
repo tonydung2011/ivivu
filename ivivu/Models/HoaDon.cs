@@ -1,11 +1,13 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ivivu.Models
 {
     public class HoaDon
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public string maHD { get; set; }
 
 		[DataType(DataType.Date)]

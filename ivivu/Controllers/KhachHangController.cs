@@ -50,7 +50,7 @@ namespace ivivu.Controllers
         {
             KhachHang ketquaKH = ivivuDB.timKhachHang(tenDangNhap, matKhau);
             if (ketquaKH != null) {
-                Session["UserID"] = Guid.NewGuid();
+                Session["UserID"] = ketquaKH.maKH;
                 Session["User"] = tenDangNhap;
                 return RedirectToAction("index", "KhachHang");
             } else {
@@ -82,10 +82,10 @@ namespace ivivu.Controllers
                 {
                     khachSans.ForEach((ks) =>
                     {
-                        ks.tenKS = ks.tenKS.Normalize();
-                        ks.duong = ks.duong.Normalize();
-                        ks.quan = ks.quan.Normalize();
-                        ks.thanhPho = ks.thanhPho.Normalize();
+                        ks.tenKS = ks.tenKS;
+                        ks.duong = ks.duong;
+                        ks.quan = ks.quan;
+                        ks.thanhPho = ks.thanhPho;
                     });
                     return View(khachSans);
                 }
@@ -124,7 +124,16 @@ namespace ivivu.Controllers
 					return RedirectToAction("dat_phong", "KhachHang", new { id1, id2});
 				}
 				List<Phong> listPhong = ivivuDB.timPhongTrongTheoNgay(startString, endString, id2);
-                ViewBag.listPhong = listPhong;
+                if (listPhong.Count > 0)
+                {
+                    ivivuDB.datPhong(Int64.Parse(Request.RequestContext.HttpContext.Session["UserID"].ToString()), id2, startDay, endDay);
+                    TimeSpan oneDay = new TimeSpan(1, 0, 0, 0);
+                    for (DateTime i = startDay; i<endDay; i = i + oneDay )
+                    {
+                        ivivuDB.danhDauDatPhong(listPhong[0].maPhong, i, "Đặt Phòng");
+                    }
+                    return RedirectToAction("index", "KhachHang");
+                }
                 return View(khachSan);
 			}
 		}

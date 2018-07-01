@@ -1,12 +1,14 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ivivu.Models
 {
     public class KhachHang
     {
         [Key]
-        public long maKH { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public Int64 maKH { get; set; }
         
         public String hoTen { get; set; }
         public String tenDangNhap { get; set; }

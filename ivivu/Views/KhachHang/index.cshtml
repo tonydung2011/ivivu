@@ -3,6 +3,7 @@
     ViewBag.Title = "Thong tin Co Ban";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">
 
 <div class="container mt-5">
     <div class="d-flex flex-row w-100 justify-content-between">
@@ -15,7 +16,47 @@
             </form>
         </div>
     </div>
+    <div>
+        <table id="statistics" class="display mt-4 table table-striped table-bordered" style="width:100%">
+            <thead>
+                <th>Mã đặt phòng</th>
+                <th>Mã Loại phòng</th>
+                <th>đơn giá</th>
+                <th>Ngày nhận phòng</th>
+                <th>Ngày Trả phòng</th>
+            </thead>
+            <tbody id='table-content'></tbody>
+        </table>
+    </div>
 </div>
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            url: "/api/DatPhongs"
+        }).done(function (data) {
+            data = JSON.parse(data).data;
+            var content = ""
+            data.forEach(function(item){
+                if (item.maKh == @Model.maKH) {
+                    content += "<tr>";
+                    content += "<td>" + item.maDP + "</td>";
+                    content += "<td>" + item.maLoaiPhong + "</td>";
+                    content += "<td>" + item.donGia + "</td>";
+                    content += "s<td>" + item.ngayBatDau + "</td>";
+                    content += "<td>" + item.ngayTraPhong + "</td>";
+                    content += "</tr>";
+                }
+            })
+            $("#table-content").html(content);
+            $('#statistics').DataTable({
+                paging: true,
+                lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+            });
+        })
+    });
+</script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
 
 <!-- them phan thong tin co ban khach hang tai day -->
 <!-- @Model.tenDangNhap, @Model.diaChi, ... -->
