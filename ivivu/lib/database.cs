@@ -131,10 +131,32 @@ namespace ivivu.lib
 			} else {
 				intStar = 0;
 			}
-			if (name == "" || name == null) name = "null";
-			if (district == "" || district == null) district = "null";
-			if (street == "" || street == null) street = "null";
-			if (city == "" || city == null) city = "null";
+            if (name == "" || name == null)
+            {
+                name = "null";
+            } else name = $"\"{name}\"";
+            if (district == "" || district == null)
+            {
+                district = "null";
+            } else
+            {
+                district = $"\"{district}\"";
+            }
+
+            if (street == "" || street == null)
+            {
+                street = "null";
+            } else
+            {
+                street = $"\"{street}\"";
+            }
+            if (city == "" || city == null)
+            {
+                city = "null";
+            } else
+            {
+                city = $"\"{city}\"";
+            }
 			if (takeFrom != "") 
 			{
 				if (Int32.TryParse(takeFrom, out temp))
