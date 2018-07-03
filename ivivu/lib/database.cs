@@ -274,5 +274,12 @@ namespace ivivu.lib
         {
             return db.DatPhongs.Where(dp => dp.maKh == maKH).ToList();
         }
+
+        public void confirmDatPhong(string maDP)
+        {
+            DatPhong datPhong = db.DatPhongs.Find(maDP);
+            datPhong.tinhTrang = "xác nhận";
+            db.SaveChanges();
+        }
     }
 }

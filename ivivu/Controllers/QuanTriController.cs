@@ -76,6 +76,7 @@ namespace ivivu.Controllers
         public ActionResult them_hoa_don(string maDP)
         {
             DatPhong datPhong = ivivuDB.timPhieuDatPhong(maDP);
+            ivivuDB.confirmDatPhong(maDP);
             if (datPhong != null)
             {
                 DateTime endDay = DateTime.Now, StartDay = DateTime.Now;
